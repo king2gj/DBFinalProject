@@ -116,7 +116,19 @@ if __name__ == "__main__":
             case "3": # Delete existing entry
                 id = ""
                 if entityInput == "3":
-                    pass
+                    deleteProductGUI = tk.Tk()
+                    deleteProductGUI.title("Delete Product")
+                    tk.Label(deleteProductGUI, text='ID: ').grid(row=0, column=0)
+                    userInput = tk.StringVar()
+                    entryBox = tk.Entry(deleteProductGUI, textvariable=userInput)
+                    entryBox.grid(row=0, column=1)
+                    def getID():
+                        global id
+                        id = userInput.get()
+                        deleteProductGUI.destroy()
+                    enterButton = tk.Button(deleteProductGUI, text="Submit", command=getID)
+                    enterButton.grid(row=0, column=2)
+                    deleteProductGUI.mainloop()
                 else:
                     id = input("Please enter the ID of the entry to delete: ")
                 params = [id]
